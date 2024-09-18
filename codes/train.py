@@ -144,8 +144,9 @@ with tqdm(total=args.num_epoch) as pbar:
                 idx = all_idx[bat_idx * args.batch_size:]
 
             curr_bat_dim = len(idx)
-            samp_bat = torch.unsqueeze(torch.cat((torch.ones(curr_bat_dim),
-                                             torch.zeros(curr_bat_dim * args.negsamp_ratio))), 1).to(args.device)
+            samp_bat = torch.unsqueeze(torch.cat(
+                (torch.ones(curr_bat_dim),torch.zeros(curr_bat_dim * args.negsamp_ratio))
+                ), 1).to(args.device)
             adj1 = []
             adj2 = []
             sub1neg_fts = []

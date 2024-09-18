@@ -779,7 +779,7 @@ def sampling_subgraph(dgl_graph, subgraph_size, bf_tr = 3, af_tr = 5):
         sub_o
     """
     all_idx = list(range(dgl_graph.number_of_nodes())) #all indexes of total of nodes in a mini-batch
-    reduced = subgraph_size - 1
+    reduced = subgraph_size - 1 # subtract the starting node 
     traces = dgl.contrib.sampling.random_walk_with_restart(dgl_graph, all_idx, restart_prob=1,
                                                            max_nodes_per_seed = subgraph_size * bf_tr)
     if_size = 2
